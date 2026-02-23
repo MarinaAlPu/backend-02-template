@@ -19,7 +19,6 @@ const server = http.createServer((request, response) => {
         return;
     }
 
-
     if (request.url === "/?users") {
         response.status = 200;
         response.statusMessage = "OK";
