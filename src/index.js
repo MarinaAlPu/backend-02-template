@@ -20,9 +20,9 @@ const server = http.createServer((request, response) => {
     }
 
     if (request.url === "/?users") {
-        response.status = 200;
+        response.statusCode = 200;
         response.statusMessage = "OK";
-        response.header = "Content-Type = application/json";
+        response.setHeader("Content-Type", "application/json");
         response.write(getUsers());
         response.end();
 
@@ -44,9 +44,9 @@ const server = http.createServer((request, response) => {
         const isParamsNamesWrong = paramsNames.some(paramName => paramName !== "hello");
 
         if (isParamsNamesWrong) {
-            response.status = 500;
+            response.statusCode = 500;
             response.statusMessage = "Error";
-            response.header = "Content-Type: text/plain";
+            // response.setHeader("Content-Type", "text/plain");
             response.write("Empty");
             response.end();
 
@@ -60,9 +60,9 @@ const server = http.createServer((request, response) => {
 
             if (hasHello) {
                 if (hello) {
-                    response.status = 200;
+                    response.statusCode = 200;
                     response.statusMessage = "OK";
-                    response.header = "Content-Type: text/plain";
+                    response.setHeader("Content-Type", "text/plain");
                     response.write(`Hello, ${hello}.`);
                     response.end();
 
@@ -70,9 +70,9 @@ const server = http.createServer((request, response) => {
                 }
 
                 if (!hello) {
-                    response.status = 400;
+                    response.statusCode = 400;
                     response.statusMessage = "Bad request";
-                    response.header = "Content-Type: text/plain";
+                    response.setHeader("Content-Type", "text/plain");
                     response.write("Enter a name");
                     response.end();
 
@@ -86,11 +86,10 @@ const server = http.createServer((request, response) => {
     };
 
 
-    response.status = 200;
+    response.statusCode = 200;
     response.statusMessage = "OK";
-    response.header = "Content-Type: text/plain";
+    response.setHeader("Content-Type", "text/plain");
     response.write("Hello, World!");
-    console.log("response.status: ", response.status);
     response.end();
 });
 
