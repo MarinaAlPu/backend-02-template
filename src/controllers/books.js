@@ -42,7 +42,7 @@ const deleteBook = (request, response) => {
   const { book_id } = request.params;
 
   return Book.findByIdAndDelete(book_id).then(
-    () => { response.status(200).send({ "result": "Success" }) }
+    () => { response.status(200).send({ "result": "Book deleted" }) }
   )
     .catch(e => response.status(500).send(e.message));
 };
