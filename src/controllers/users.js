@@ -51,7 +51,7 @@ const deleteUser = (request, response) => {
   const { user_id } = request.params;
 
   return User.findByIdAndDelete(user_id).then(
-    () => { response.status(200).send("Success") }
+    () => { response.status(200).send({ "result": "User deleted" }) }
   )
     .catch(e => response.status(500).send(e.message));
 };
