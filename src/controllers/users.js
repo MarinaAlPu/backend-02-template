@@ -1,13 +1,34 @@
+const User = require("../models/user");
+
+
 const getUsers = (request, response) => {
   // Get all users
 };
 
 const getUser = (request, response) => {
-  // Get user by ID
+  // const { user_id } = request.params;
+  // response.statusCode = 200;
+  // response.send(`User with id ${user_id}`);
+
+  const { user_id } = request.params;
+
+  return User.findById(user_id).then(
+    (user) => { response.status(200).send(user) }
+  )
+    .catch(e => response.status(500).send(e.message));
 };
 
 const createUser = (request, response) => {
-  // Add new user
+  // response.statusCode = 201;
+  // response.send(request.body);
+
+  console.log("request.body: ", request.body);
+
+  return User.create({ ...request.body })
+    .then((user) => {
+      response.status(201).send(user);
+    })
+    .catch(e => response.status(500).send(e.message));
 };
 
 const updateUser = (request, response) => {
