@@ -46,6 +46,13 @@ app.use(userRouter);
 app.use(bookRouter);
 
 
+app.use((request, response) => {
+    response.status(404).json({
+        message: "Неправильный URL"
+    });
+});
+
+
 app.listen(`${PORT}`, () => {
     console.log(`Сервер запущен по адресу ${API_URL}:${PORT}`);
 });
