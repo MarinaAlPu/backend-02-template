@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 const userRouter = require("./routes/users");
 const bookRouter = require("./routes/books");
-const loggerOne = require("./middlewares/loggerOne");
+// const loggerOne = require("./middlewares/loggerOne");
 
 dotenv.config();
 
@@ -28,18 +28,18 @@ const app = express();
 
 
 app.use(cors());
-app.use(loggerOne);
+// app.use(loggerOne);
 app.use(bodyParser.json());
 
 
 
-// фукнция обработки данных
-const hello = (request, response) => {
-    response.statusCode = 200;
-    response.send("Hello, GET");
-}
+// // фукнция обработки данных
+// const hello = (request, response) => {
+//     response.statusCode = 200;
+//     response.send("Hello, GET");
+// }
 
-app.get("/", hello);
+// app.get("/", hello);
 
 
 app.use(userRouter);
