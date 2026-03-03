@@ -5,7 +5,7 @@ const getBooks = (request, response) => {
   return Book.find({}).then(
     (data) => { response.status(200).send(data) }
   )
-    .catch(e => response.status(500).send(e.message));
+    .catch(e => response.status(500).send({"error message": e.message}));
 };
 
 const getBook = (request, response) => {
@@ -18,7 +18,7 @@ const getBook = (request, response) => {
       }
       response.status(200).send(book);
     })
-    .catch(e => response.status(500).send(e.message));
+    .catch(e => response.status(500).send({"error message": e.message}));
 };
 
 const createBook = (request, response) => {
@@ -26,7 +26,7 @@ const createBook = (request, response) => {
     .then((book) => {
       response.status(201).send(book);
     })
-    .catch(e => response.status(500).send(e.message));
+    .catch(e => response.status(500).send({"error message": e.message}));
 };
 
 const updateBook = (request, response) => {
@@ -35,7 +35,7 @@ const updateBook = (request, response) => {
   return Book.findByIdAndUpdate(book_id, { ...request.body }, { new: true }).then(
     (book) => { response.status(200).send(book) }
   )
-    .catch(e => response.status(500).send(e.message));
+    .catch(e => response.status(500).send({"error message": e.message}));
 };
 
 const deleteBook = (request, response) => {
@@ -44,7 +44,7 @@ const deleteBook = (request, response) => {
   return Book.findByIdAndDelete(book_id).then(
     () => { response.status(200).send({ "result": "Book deleted" }) }
   )
-    .catch(e => response.status(500).send(e.message));
+    .catch(e => response.status(500).send({"error message": e.message}));
 };
 
 
