@@ -5,6 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const userRouter = require("./routes/users");
+const bookRouter = require("./routes/books");
 const loggerOne = require("./middlewares/loggerOne");
 
 dotenv.config();
@@ -42,6 +43,7 @@ app.get("/", hello);
 
 
 app.use(userRouter);
+app.use(bookRouter);
 
 
 app.listen(`${PORT}`, () => {
