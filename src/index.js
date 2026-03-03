@@ -6,15 +6,16 @@ const mongoose = require("mongoose");
 
 const userRouter = require("./routes/users");
 const bookRouter = require("./routes/books");
-// const loggerOne = require("./middlewares/loggerOne");
 
 dotenv.config();
+
 
 const {
     PORT = 3000,
     API_URL = "http://127.0.0.1",
     MONGO_URL = "mongodb://localhost:27017/backend"
 } = process.env;
+
 
 mongoose.connect(MONGO_URL)
     .then(() => {
@@ -28,18 +29,7 @@ const app = express();
 
 
 app.use(cors());
-// app.use(loggerOne);
 app.use(bodyParser.json());
-
-
-
-// // фукнция обработки данных
-// const hello = (request, response) => {
-//     response.statusCode = 200;
-//     response.send("Hello, GET");
-// }
-
-// app.get("/", hello);
 
 
 app.use(userRouter);

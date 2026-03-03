@@ -11,9 +11,6 @@ const getUsers = (request, response) => {
 
 const getUser = (request, response) => {
   console.log("Запрос getUser отправлен по адресу", request.originalUrl);
-  // const { user_id } = request.params;
-  // response.statusCode = 200;
-  // response.send(`User with id ${user_id}`);
 
   const { user_id } = request.params;
 
@@ -29,10 +26,6 @@ const getUser = (request, response) => {
 
 const createUser = (request, response) => {
   console.log("Запрос createUser отправлен по адресу", request.originalUrl);
-  // response.statusCode = 201;
-  // response.send(request.body);
-
-  console.log("request.body: ", request.body);
 
   return User.create({ ...request.body })
     .then((user) => {
