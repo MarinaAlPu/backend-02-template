@@ -14,7 +14,7 @@ const getBook = (request, response) => {
   return Book.findById(book_id)
     .then((book) => {
       if (!book) {
-        return response.status(404).send("Book not found");
+        return response.status(404).send({ "result": "Book not found" });
       }
       response.status(200).send(book);
     })
@@ -42,7 +42,7 @@ const deleteBook = (request, response) => {
   const { book_id } = request.params;
 
   return Book.findByIdAndDelete(book_id).then(
-    () => { response.status(200).send({"result": "Success"}) }
+    () => { response.status(200).send({ "result": "Success" }) }
   )
     .catch(e => response.status(500).send(e.message));
 };
